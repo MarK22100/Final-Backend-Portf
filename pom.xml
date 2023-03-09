@@ -11,8 +11,8 @@
     <groupId>com.portfolio</groupId>
     <artifactId>mgb</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>portfolio.Produccion</name>
-    <description>Portfolio de MGB</description>
+    <name>mbg.Produccion</name>
+    <description>Portfolio de MZ</description>
     <properties>
         <java.version>1.8</java.version>
     </properties>
