@@ -1,15 +1,4 @@
-#
-# Build stage
-#
-FROM maven:3.8.2-jdk-8 AS build
-COPY . .
-RUN mvn clean package -DskipTests
-
-#
-# Package stage
-#
-FROM openjdk:8-jdk-slim
-COPY --from=build /target/mgb-0.0.1-SNAPSHOT.jar app.jar
-# ENV PORT=8080
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","app.jar"]
+FROM amazoncorretto:11-alpine-jdk
+MAINTAINER MGB
+COPY target/mgb-0.0.1-SNAPSHOT.jar  mgb-app.jar
+ENTRYPOINT ["java","-jar","/mgb-app.jar"]
