@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/usuarios")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"https://portfmz.web.app","http://localhost:4200"})
 public class PersonaController {
     @Autowired IPersonaService ipersonservice;
     
@@ -28,20 +28,18 @@ public class PersonaController {
         return ipersonservice.getPersona();
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/crear")
     public String createPersona(@RequestBody Persona person){
         ipersonservice.savePersona(person);
         return ("El usuario se creo correctamente");
     }
     
-    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/borrar/{id}")
     public String deletePerson (@PathVariable Long id){
         ipersonservice.deletePersona(id);
         return ("El usuario fue eliminado correctamente");}
     
-    @PreAuthorize("hasRole('ADMIN')")
+
     @PutMapping("/editar/{id}")
     public Persona editPerson(@PathVariable Long id,
                              @RequestParam("nombre") String newNombre,
