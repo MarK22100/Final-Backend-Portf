@@ -36,6 +36,5 @@ com\portfolio\mgb\Security\Dto\JwtDto.class
 com\portfolio\mgb\Service\SExperiencia.class
 com\portfolio\mgb\Repository\IPersonaRepository.class
 com\portfolio\mgb\Security\jwt\JwtProvider.class
-com\portfolio\mgb\WebConfig.class
 com\portfolio\mgb\Security\Enums\RolNombre.class
 com\portfolio\mgb\Security\Service\RolService.class
