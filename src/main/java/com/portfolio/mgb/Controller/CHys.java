@@ -1,4 +1,4 @@
-package com.portfolio.mgb.Controller;
+ package com.portfolio.mgb.Controller;
 
 import com.portfolio.mgb.Dto.dtoHys;
 import com.portfolio.mgb.Entity.hys;

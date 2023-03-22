@@ -5,6 +5,8 @@
  */
 package com.portfolio.mgb.Security.Controller;
 
+import com.portfolio.mgb.Entity.Educacion;
+import com.portfolio.mgb.Entity.Persona;
 import com.portfolio.mgb.Security.Dto.JwtDto;
 import com.portfolio.mgb.Security.Dto.LoginUsuario;
 import com.portfolio.mgb.Security.Dto.NuevoUsuario;
@@ -15,6 +17,7 @@ import com.portfolio.mgb.Security.Service.RolService;
 import com.portfolio.mgb.Security.Service.UsuarioService;
 import com.portfolio.mgb.Security.jwt.JwtProvider;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,11 +30,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
@@ -47,7 +46,21 @@ public class AuthController {
     RolService rolService;
     @Autowired
     JwtProvider jwtProvider;
-    
+
+    @GetMapping("/traer")
+    public ResponseEntity<List<Usuario>> list(){
+        List<Usuario> list = usuarioService.list();
+        return new ResponseEntity(list, HttpStatus.OK);
+    }
+    @DeleteMapping("/borrar/{id}")
+    public ResponseEntity<?>delete(@PathVariable("id") int id){
+        usuarioService.delete(id);
+        return new ResponseEntity(new Mensaje("Educacion eliminada"), HttpStatus.OK);
+    }
+
+
+
+
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
         if(bindingResult.hasErrors())

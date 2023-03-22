@@ -5,8 +5,11 @@
  */
 package com.portfolio.mgb.Security.Service;
 
+import com.portfolio.mgb.Entity.Educacion;
 import com.portfolio.mgb.Security.Entity.Usuario;
 import com.portfolio.mgb.Security.Repository.iUsuarioRepository;
+
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +28,18 @@ public class UsuarioService {
     public boolean existsByNombreUsuario(String nombreUsuario){
         return iusuarioRepository.existsByNombreUsuario(nombreUsuario);
     }
-    
+    public List<Usuario> list(){
+        return iusuarioRepository.findAll();}
     public boolean existsByEmail(String email){
         return iusuarioRepository.existsByEmail(email);
     }
     
     public void save(Usuario usuario){
         iusuarioRepository.save(usuario);
+    }
+
+
+    public void delete(int id){
+        iusuarioRepository.deleteById(id);
     }
 }

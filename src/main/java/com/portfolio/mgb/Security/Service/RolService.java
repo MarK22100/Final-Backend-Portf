@@ -5,9 +5,12 @@
  */
 package com.portfolio.mgb.Security.Service;
 
+import com.portfolio.mgb.Entity.Educacion;
 import com.portfolio.mgb.Security.Entity.Rol;
 import com.portfolio.mgb.Security.Enums.RolNombre;
 import com.portfolio.mgb.Security.Repository.iRolRepository;
+
+import java.util.List;
 import java.util.Optional;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +25,10 @@ public class RolService {
     public Optional<Rol> getByRolNombre(RolNombre rolNombre){
         return irolRepository.findByRolNombre(rolNombre);
     }
-    
+
+    public List<Rol> list(){
+        return irolRepository.findAll();
+    }
     public void save(Rol rol){
         irolRepository.save(rol);
     }
