@@ -33,7 +33,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("auth")
+@RequestMapping("/auth")
 @CrossOrigin(origins = {"https://portafolio-mz.web.app"})
 public class AuthController {
     @Autowired
