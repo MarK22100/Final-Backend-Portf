@@ -47,19 +47,6 @@ public class AuthController {
     @Autowired
     JwtProvider jwtProvider;
 
-    @GetMapping("/traer")
-    public ResponseEntity<List<Usuario>> list(){
-        List<Usuario> list = usuarioService.list();
-        return new ResponseEntity(list, HttpStatus.OK);
-    }
-    @DeleteMapping("/borrar/{id}")
-    public ResponseEntity<?>delete(@PathVariable("id") int id){
-        usuarioService.delete(id);
-        return new ResponseEntity(new Mensaje("Educacion eliminada"), HttpStatus.OK);
-    }
-
-
-
 
     @PostMapping("/nuevo")
     public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult){
