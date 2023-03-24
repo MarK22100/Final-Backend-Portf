@@ -15,6 +15,6 @@ public class MgbApplication {
 		SpringApplication.run(MgbApplication.class, args);
 	}
            public void addResourceHandlers(final ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/resources/**").addResourceLocations("/resources/");
+        registry.addResourceHandler("/**").addResourceLocations("/**/");
     }
 }
