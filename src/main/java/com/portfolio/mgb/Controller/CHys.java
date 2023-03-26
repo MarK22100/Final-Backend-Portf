@@ -21,20 +21,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/skill")
 @CrossOrigin(origins = {"https://mz-portafolio.web.app"})
 public class CHys {
 
     @Autowired
     Shys shys;
 
-    @GetMapping("/lista")
+    @GetMapping("skill/lista")
     public ResponseEntity<List<hys>> list() {
         List<hys> list = shys.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    @GetMapping("/detail/{id}")
+    @GetMapping("skill/detail/{id}")
     public ResponseEntity<hys> getById(@PathVariable("id") int id) {
         if (!shys.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
@@ -43,7 +42,7 @@ public class CHys {
         return new ResponseEntity(hYs, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("skill/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         if (!shys.existsById(id)) {
             return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
@@ -52,7 +51,7 @@ public class CHys {
         return new ResponseEntity(new Mensaje("Skill eliminado"), HttpStatus.OK);
     }
 
-    @PostMapping("/create")
+    @PostMapping("skill/create")
     public ResponseEntity<?> create(@RequestBody dtoHys dtohys) {
         if (StringUtils.isBlank(dtohys.getNombre())) {
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
@@ -67,7 +66,7 @@ public class CHys {
         return new ResponseEntity(new Mensaje("Skill agregada"), HttpStatus.OK);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("skill/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoHys dtohys) {
         //Validamos si existe el ID
         if (!shys.existsById(id)) {

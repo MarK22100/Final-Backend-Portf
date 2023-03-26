@@ -25,18 +25,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/educacion")
-@CrossOrigin(origins = {"https://mz-portafolio.web.app"})
+@CrossOrigin(origins = {"https://mz-portafolio.web.app/"})
 public class CEducacion {
     @Autowired
     Seducacion sEducacion;
     
-    @GetMapping("/lista")
+    @GetMapping("educacion/lista")
     public ResponseEntity<List<Educacion>> list(){
         List<Educacion> list = sEducacion.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
-    @GetMapping("/detail/{id}")
+    @GetMapping("educacion/detail/{id}")
     public ResponseEntity<Educacion> getById(@PathVariable("id")int id){
         if(!sEducacion.existsById(id)){
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.BAD_REQUEST);
@@ -46,7 +45,7 @@ public class CEducacion {
         return new ResponseEntity(educacion, HttpStatus.OK);
     }
     
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("educacion/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id){
         if(!sEducacion.existsById(id)){
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
@@ -55,7 +54,7 @@ public class CEducacion {
         return new ResponseEntity(new Mensaje("Educacion eliminada"), HttpStatus.OK);
     }
     
-    @PostMapping("/save")
+    @PostMapping("educacion/save")
     public ResponseEntity<?> create(@RequestBody dtoEducacion dtoeducacion){
         if(StringUtils.isBlank(dtoeducacion.getNombreE())){
             return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
@@ -72,7 +71,7 @@ public class CEducacion {
                 
     }
     
-    @PutMapping("/update/{id}")
+    @PutMapping("educacion/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoEducacion dtoeducacion){
         if(!sEducacion.existsById(id)){
             return new ResponseEntity(new Mensaje("No existe el ID"), HttpStatus.NOT_FOUND);
