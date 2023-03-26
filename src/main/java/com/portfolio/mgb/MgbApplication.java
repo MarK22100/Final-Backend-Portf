@@ -20,7 +20,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.portfolio.mbg")
 public class MgbApplication {
 
     public static void main(String[] args) {

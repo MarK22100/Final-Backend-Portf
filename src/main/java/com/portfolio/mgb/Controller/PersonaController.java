@@ -19,28 +19,29 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = {"https://mz-portafolio.web.app"})
+@RequestMapping("/usuario")
+@CrossOrigin
 public class PersonaController {
     @Autowired IPersonaService ipersonservice;
     
-    @GetMapping("usuario/perfil")
-    public List <Persona> getPerson(){
-        return ipersonservice.getPersona();
+    @GetMapping("/perfil")
+    public Persona findPersona(){
+        return ipersonservice.findPersona((long)1);
     }
     
-    @PostMapping
+    @PostMapping("/crear")
     public String createPersona(@RequestBody Persona person){
         ipersonservice.savePersona(person);
         return ("El usuario se creo correctamente");
     }
     
-    @DeleteMapping
+    @DeleteMapping("/delete/{id}")
     public String deletePerson (@PathVariable Long id){
         ipersonservice.deletePersona(id);
         return ("El usuario fue eliminado correctamente");}
     
 
-    @PutMapping
+    @PutMapping("/editar/{id}")
     public Persona editPerson(@PathVariable Long id,
                              @RequestParam("nombre") String newNombre,
                              @RequestParam("apellido") String newApellido,
