@@ -7,6 +7,7 @@ package com.portfolio.mgb.Dto;
 
 import javax.validation.constraints.NotBlank;
 
+
 /**
  *
  * @author Usuario

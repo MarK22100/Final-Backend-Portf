@@ -5,6 +5,7 @@
  */
 package com.portfolio.mgb.Entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
