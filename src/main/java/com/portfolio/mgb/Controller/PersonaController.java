@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PersonaController {
     @Autowired IPersonaService ipersonservice;
     
-    @GetMapping
+    @GetMapping("/trer")
     public List <Persona> getPerson(){
         return ipersonservice.getPersona();
     }
