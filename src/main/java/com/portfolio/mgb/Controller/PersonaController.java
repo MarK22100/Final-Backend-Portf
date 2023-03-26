@@ -14,17 +14,18 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping(value= "/usuario", method = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE})
 @CrossOrigin(origins = {"https://mz-portafolio.web.app"})
 public class PersonaController {
     @Autowired IPersonaService ipersonservice;
     
-    @GetMapping("/trer")
+    @GetMapping("/perfil")
     public List <Persona> getPerson(){
         return ipersonservice.getPersona();
     }
