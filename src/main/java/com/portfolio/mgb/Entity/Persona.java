@@ -26,7 +26,7 @@ public class Persona {
     @Size(min = 1, max = 9999, message = "No tiene la longitud requerida")
     private String img;
     @NotNull
-    @Size(min = 1, max = 50, message = "No tiene la longitud requerida")
+    @Size(min = 1, max = 5000, message = "No tiene la longitud requerida")
     private String about;
     
     

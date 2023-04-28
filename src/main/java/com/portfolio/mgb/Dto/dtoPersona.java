@@ -18,17 +18,17 @@ public class dtoPersona {
     @NotBlank
     private String apellido;
     @NotBlank
-    private String descripcion;
+    private String about;
     @NotBlank
     private String img;
 
     public dtoPersona() {
     }
 
-    public dtoPersona(String nombre, String apellido, String descripcion, String img) {
+    public dtoPersona(String nombre, String apellido, String about, String img) {
         this.nombre = nombre;
         this.apellido = apellido;
-        this.descripcion = descripcion;
+        this.about = about;
         this.img = img;
     }
 
@@ -48,12 +48,12 @@ public class dtoPersona {
         this.apellido = apellido;
     }
 
-    public String getDescripcion() {
-        return descripcion;
+    public String getAbout() {
+        return about;
     }
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
+    public void setAbout(String about) {
+        this.about = about;
     }
 
     public String getImg() {

@@ -66,8 +66,8 @@ public class CEducacion {
         }
         
         Educacion educacion = new Educacion(
-                dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE()
-            );
+                dtoeducacion.getNombreE(), dtoeducacion.getDescripcionE(),dtoeducacion.getInicioEd(),dtoeducacion.getFinEd(),dtoeducacion.getImg()
+        );
         sEducacion.save(educacion);
         return new ResponseEntity(new Mensaje("Educacion creada"), HttpStatus.OK);
                 
@@ -84,14 +84,17 @@ public class CEducacion {
         if(StringUtils.isBlank(dtoeducacion.getNombreE())){
             return new ResponseEntity(new Mensaje("El campo no puede estar vacio"), HttpStatus.BAD_REQUEST);
         }
-        
+
         Educacion educacion = sEducacion.getOne(id).get();
-        
+
         educacion.setNombreE(dtoeducacion.getNombreE());
         educacion.setDescripcionE(dtoeducacion.getDescripcionE());
-        
+        educacion.setInicioEd(dtoeducacion.getInicioEd());
+        educacion.setFinEd(dtoeducacion.getFinEd());
+        educacion.setImg(dtoeducacion.getImg());
+
         sEducacion.save(educacion);
-        
+
         return new ResponseEntity(new Mensaje("Educacion actualizada"), HttpStatus.OK);
     }
 }

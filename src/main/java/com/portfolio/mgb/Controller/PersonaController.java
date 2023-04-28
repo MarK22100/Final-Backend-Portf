@@ -41,7 +41,7 @@ public class PersonaController {
         return ("El usuario fue eliminado correctamente");}
     
 
-    @PutMapping("/editar/{id}")
+    @PutMapping("/editar/1")
     public Persona editPerson(@PathVariable Long id,
                              @RequestParam("nombre") String newNombre,
                              @RequestParam("apellido") String newApellido,
